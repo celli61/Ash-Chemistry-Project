@@ -92,23 +92,23 @@ plot_standard_presence <- function(peak_tab, run_index, data_table){
 }
 
 #Plotting and saving standard presence plots for all subsets
-plot_standard_presence(doe_pk_tab, 43, standards_data_table)
+#plot_standard_presence(doe_pk_tab, 43, standards_data_table)
 ggsave("doe_plot_standard_presence.pdf", plot = plot_standard_presence(doe_pk_tab, 43, standards_data_table))
-plot_standard_presence(fre_pk_tab, 12, standards_data_table)
+#plot_standard_presence(fre_pk_tab, 12, standards_data_table)
 ggsave("fre_plot_standard_presence.pdf", plot = plot_standard_presence(fre_pk_tab, 12, standards_data_table))
-plot_standard_presence(eas_pk_tab, 27, standards_data_table)
+#plot_standard_presence(eas_pk_tab, 27, standards_data_table)
 ggsave("eas_plot_standard_presence.pdf", plot = plot_standard_presence(eas_pk_tab, 27, standards_data_table))
-plot_standard_presence(jen_pk_tab, 24, standards_data_table)
+#plot_standard_presence(jen_pk_tab, 24, standards_data_table)
 ggsave("jen_plot_standard_presence.pdf", plot = plot_standard_presence(jen_pk_tab, 24, standards_data_table))
 
-plot_standard_presence(tut_pk_tab, 12, standards21_data_table)
-ggsave("tut_plot_standard_presence.pdf", plot = plot_standard_presence(tut_pk_tab, 12, standards21_data_table))
-plot_standard_presence(pow_pk_tab, 67, standards21_data_table)
-ggsave("pow_plot_standard_presence.pdf", plot = plot_standard_presence(pow_pk_tab, 67, standards21_data_table))
-plot_standard_presence(lee_pk_tab, 4, standards21_data_table)
-ggsave("lee_plot_standard_presence.pdf", plot = plot_standard_presence(lee_pk_tab, 4, standards21_data_table))
-plot_standard_presence(lit_pk_tab, 4, standards21_data_table)
-ggsave("lit_plot_standard_presence.pdf", plot = plot_standard_presence(lit_pk_tab, 4, standards21_data_table))
+#plot_standard_presence(tut_pk_tab, 12, standards_data_table_21)
+ggsave("tut_plot_standard_presence.pdf", plot = plot_standard_presence(tut_pk_tab, 12, standards_data_table_21))
+#plot_standard_presence(pow_pk_tab, 67, standards_data_table_21)
+ggsave("pow_plot_standard_presence.pdf", plot = plot_standard_presence(pow_pk_tab, 67, standards_data_table_21))
+#plot_standard_presence(lee_pk_tab, 4, standards_data_table_21)
+ggsave("lee_plot_standard_presence.pdf", plot = plot_standard_presence(lee_pk_tab, 4, standards_data_table_21))
+#plot_standard_presence(lit_pk_tab, 4, standards_data_table_21)
+ggsave("lit_plot_standard_presence.pdf", plot = plot_standard_presence(lit_pk_tab, 4, standards_data_table_21))
 
 
 ###---Plotting Standard Presence by Tree Size---###
@@ -171,23 +171,23 @@ plot_standard_presence_tree_size = function(std_pres_tab, subset_meta) {
 }
 
 #plotting and saving all standard presence detection plots for all subsets
-plot_standard_presence_tree_size(doe_standard_presence_table, doe_meta)
-ggsave("doe_plot_standard_presence_detection.png", plot = plot_standard_presence_detection(doe_standard_presence_table, doe_meta))
-plot_standard_presence_tree_size(fre_standard_presence_table, fre_meta)
-ggsave("fre_plot_standard_presence_detection.png", plot = plot_standard_presence_detection(fre_standard_presence_table, fre_meta))
-plot_standard_presence_tree_size(eas_standard_presence_table, eas_meta)
-ggsave("eas_plot_standard_presence_detection.png", plot = plot_standard_presence_detection(eas_standard_presence_table, eas_meta))
-plot_standard_presence_tree_size(jen_standard_presence_table, jen_meta)
-ggsave("jen_plot_standard_presence_detection.png", plot = plot_standard_presence_detection(jen_standard_presence_table, jen_meta))
+#plot_standard_presence_tree_size(doe_standard_presence_table, doe_meta)
+ggsave("doe_plot_standard_presence_detection.png", plot = plot_standard_presence_tree_size(doe_standard_presence_table, doe_meta))
+#plot_standard_presence_tree_size(fre_standard_presence_table, fre_meta)
+ggsave("fre_plot_standard_presence_detection.png", plot = plot_standard_presence_tree_size(fre_standard_presence_table, fre_meta))
+#plot_standard_presence_tree_size(eas_standard_presence_table, eas_meta)
+ggsave("eas_plot_standard_presence_detection.png", plot = plot_standard_presence_tree_size(eas_standard_presence_table, eas_meta))
+#plot_standard_presence_tree_size(jen_standard_presence_table, jen_meta)
+ggsave("jen_plot_standard_presence_detection.png", plot = plot_standard_presence_tree_size(jen_standard_presence_table, jen_meta))
 
-plot_standard_presence_detection(tut_standard_presence_table, tut_meta)
-ggsave("tut_plot_standard_presence_detection.png", plot = plot_standard_presence_detection(tut_standard_presence_table, tut_meta))
-plot_standard_presence_detection(pow_standard_presence_table, pow_meta)
-ggsave("pow_plot_standard_presence_detection.png", plot = plot_standard_presence_detection(pow_standard_presence_table, pow_meta))
-plot_standard_presence_detection(lee_standard_presence_table, lee_meta)
-ggsave("lee_plot_standard_presence_detection.png", plot = plot_standard_presence_detection(lee_standard_presence_table, lee_meta))
-plot_standard_presence_detection(lit_standard_presence_table, lit_meta)
-ggsave("lit_plot_standard_presence_detection.png", plot = plot_standard_presence_detection(lit_standard_presence_table, lit_meta))
+#plot_standard_presence_tree_size(tut_standard_presence_table, tut_meta)
+ggsave("tut_plot_standard_presence_detection.png", plot = plot_standard_presence_tree_size(tut_standard_presence_table, tut_meta))
+#plot_standard_presence_tree_size(pow_standard_presence_table, pow_meta)
+ggsave("pow_plot_standard_presence_detection.png", plot = plot_standard_presence_tree_size(pow_standard_presence_table, pow_meta))
+#plot_standard_presence_tree_size(lee_standard_presence_table, lee_meta)
+ggsave("lee_plot_standard_presence_detection.png", plot = plot_standard_presence_tree_size(lee_standard_presence_table, lee_meta))
+#plot_standard_presence_tree_size(lit_standard_presence_table, lit_meta)
+ggsave("lit_plot_standard_presence_detection.png", plot = plot_standard_presence_tree_size(lit_standard_presence_table, lit_meta))
 
 
 ###---Plotting Algorithmic Detection Rate by Tree Size---###
@@ -253,23 +253,27 @@ plot_standard_presence_rate = function(std_pres_tab, subset_meta) {
 }
 
 #plotting and saving all standard presence rate table plots for all susbets
-plot_standard_presence_rate(doe_standard_presence_table, doe_meta)
+#plot_standard_presence_rate(doe_standard_presence_table, doe_meta)
 ggsave("doe_plot_standard_presence_rate.pdf", plot = plot_standard_presence_rate(doe_standard_presence_table, doe_meta))
-plot_standard_presence_rate(fre_standard_presence_table, fre_meta)
+#plot_standard_presence_rate(fre_standard_presence_table, fre_meta)
 ggsave("fre_plot_standard_presence_rate.pdf", plot = plot_standard_presence_rate(fre_standard_presence_table, fre_meta))
-plot_standard_presence_rate(eas_standard_presence_table, eas_meta)
+#plot_standard_presence_rate(eas_standard_presence_table, eas_meta)
 ggsave("eas_plot_standard_presence_rate.pdf", plot = plot_standard_presence_rate(eas_standard_presence_table, eas_meta))
-plot_standard_presence_rate(jen_standard_presence_table, jen_meta)
+#plot_standard_presence_rate(jen_standard_presence_table, jen_meta)
 ggsave("jen_plot_standard_presence_rate.pdf", plot = plot_standard_presence_rate(jen_standard_presence_table, jen_meta))
 
-plot_standard_presence_rate(tut_standard_presence_table, tut_meta)
+#plot_standard_presence_rate(tut_standard_presence_table, tut_meta)
 ggsave("tut_plot_standard_presence_rate.pdf", plot = plot_standard_presence_rate(tut_standard_presence_table, tut_meta))
-plot_standard_presence_rate(pow_standard_presence_table, pow_meta)
+#plot_standard_presence_rate(pow_standard_presence_table, pow_meta)
 ggsave("pow_plot_standard_presence_rate.pdf", plot = plot_standard_presence_rate(pow_standard_presence_table, pow_meta))
-plot_standard_presence_rate(lee_standard_presence_table, lee_meta)
+#plot_standard_presence_rate(lee_standard_presence_table, lee_meta)
 ggsave("lee_plot_standard_presence_rate.pdf", plot = plot_standard_presence_rate(lee_standard_presence_table, lee_meta))
-plot_standard_presence_rate(lit_standard_presence_table, lit_meta)
+#plot_standard_presence_rate(lit_standard_presence_table, lit_meta)
 ggsave("lit_plot_standard_presence_rate.pdf", plot = plot_standard_presence_rate(lit_standard_presence_table, lit_meta))
+
+
+
+
 
 
 ###---Plotting Algorithmic Detetction by Treatment Type---###
@@ -339,22 +343,22 @@ plot_standard_presence_rate_treatment = function(std_pres_tab, subset_meta) {
 }
 
 #plotting and saving att standard presence rate by treatment plots for all susbets
-plot_standard_presence_rate_treatment(doe_standard_presence_table, doe_meta)
+#plot_standard_presence_rate_treatment(doe_standard_presence_table, doe_meta)
 ggsave("doe_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(doe_standard_presence_table, doe_meta))
 plot_standard_presence_rate_treatment(fre_standard_presence_table, fre_meta)
-ggsave("fre_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(fre_standard_presence_table, fre_meta))
+#ggsave("fre_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(fre_standard_presence_table, fre_meta))
 plot_standard_presence_rate_treatment(eas_standard_presence_table, eas_meta)
-ggsave("eas_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(eas_standard_presence_table, eas_meta))
+#ggsave("eas_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(eas_standard_presence_table, eas_meta))
 plot_standard_presence_rate_treatment(jen_standard_presence_table, jen_meta)
-ggsave("jen_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(jen_standard_presence_table, jen_meta))
+#ggsave("jen_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(jen_standard_presence_table, jen_meta))
 
-plot_standard_presence_rate_treatment(tut_standard_presence_table, tut_meta)
+#plot_standard_presence_rate_treatment(tut_standard_presence_table, tut_meta)
 ggsave("tut_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(tut_standard_presence_table, tut_meta))
-plot_standard_presence_rate_treatment(pow_standard_presence_table, pow_meta)
+#plot_standard_presence_rate_treatment(pow_standard_presence_table, pow_meta)
 ggsave("pow_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(pow_standard_presence_table, pow_meta))
-plot_standard_presence_rate_treatment(lee_standard_presence_table, lee_meta)
+#plot_standard_presence_rate_treatment(lee_standard_presence_table, lee_meta)
 ggsave("lee_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(lee_standard_presence_table, lee_meta))
-plot_standard_presence_rate_treatment(lit_standard_presence_table, lit_meta)
+#plot_standard_presence_rate_treatment(lit_standard_presence_table, lit_meta)
 ggsave("lit_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(lit_standard_presence_table, lit_meta))
 
 
@@ -1055,18 +1059,18 @@ compare_identified_peaks = function(peak_tab, standards_data, standard_index) {
   
 }
 
-compare_identified_peaks(doe_pk_tab, standards_data_table, 1)
-compare_identified_peaks(doe_pk_tab, standards_data_table, 2)
-compare_identified_peaks(doe_pk_tab, standards_data_table, 3)
-compare_identified_peaks(doe_pk_tab, standards_data_table, 4)
-compare_identified_peaks(doe_pk_tab, standards_data_table, 5)
-compare_identified_peaks(doe_pk_tab, standards_data_table, 6)
-compare_identified_peaks(doe_pk_tab, standards_data_table, 7)
-compare_identified_peaks(doe_pk_tab, standards_data_table, 8)
-compare_identified_peaks(doe_pk_tab, standards_data_table, 9)
-compare_identified_peaks(doe_pk_tab, standards_data_table, 10)
-compare_identified_peaks(doe_pk_tab, standards_data_table, 11)
-compare_identified_peaks(doe_pk_tab, standards_data_table, 12)
+#compare_identified_peaks(doe_pk_tab, standards_data_table, 1)
+#compare_identified_peaks(doe_pk_tab, standards_data_table, 2)
+#compare_identified_peaks(doe_pk_tab, standards_data_table, 3)
+#compare_identified_peaks(doe_pk_tab, standards_data_table, 4)
+#compare_identified_peaks(doe_pk_tab, standards_data_table, 5)
+#compare_identified_peaks(doe_pk_tab, standards_data_table, 6)
+#compare_identified_peaks(doe_pk_tab, standards_data_table, 7)
+#compare_identified_peaks(doe_pk_tab, standards_data_table, 8)
+#compare_identified_peaks(doe_pk_tab, standards_data_table, 9)
+#compare_identified_peaks(doe_pk_tab, standards_data_table, 10)
+#compare_identified_peaks(doe_pk_tab, standards_data_table, 11)
+#compare_identified_peaks(doe_pk_tab, standards_data_table, 12)
 
 
 
