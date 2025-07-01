@@ -165,51 +165,6 @@ standards_data_table_21 = rbind(standards_data_table_21, standard_max_spectra_21
 print(standards_data_table_21)
 
 
-###---Creating a calculated concentration table method---###
-# get_concentration_table(peak_tab, data_table, std_curve_eq_list)
-#
-# @param peak_tab - A chromatographR peak_table object for a subset.
-# @param data_table - A data frame containing the peak data for all 12 standards.
-# @param std_curve_eq_list - An ordered list of the concentration curve equation data for the external standards.
-#
-# @return - A data frame displaying the calculated concentration of the 12 standards for each treatment in the subset.
-#
-get_concentration_table = function(peak_tab, data_table, std_curve_eq_list){
-  #Create an empty nrow(peak_tab) x 12 numeric data frame to store calculated concentration data 
-  concentration_table_df = data.frame(matrix(0, length(peak_tab$tab[,1]), 12))
-  rownames(concentration_table_df) = rownames(peak_tab$tab)
-  colnames(concentration_table_df) = data_table[1, ]
-  
-  #Iterate over the 12 external standards
-  for(i in 1:ncol(concentration_table_df)){
-    #Store the index of the peak who's RT fell within range of the current standard
-    standard_peak_index = linear_search(peak_tab$pk_meta[3, ], as.numeric(data_table["RT",i]), as.numeric(data_table["SD", i]))
-    
-    #Check that a peak was found
-    if(standard_peak_index != -1){
-      #At this point we can conclude the standard may be present in one or more of the treatments
-      
-      #Iterate over treatments in subset
-      for(j in 1:nrow(concentration_table_df)){
-        #Check if the absorbance at the identified peak in the current treatment is nonzero
-        if(peak_tab$tab[j, standard_peak_index] > 0){
-          #At this point we can conclude that there is absorbance value at the current standard's peak in the treatment
-          
-          #Storing curve EQ data
-          y = peak_tab$tab[j, standard_peak_index]
-          m = std_curve_eq_list[[1]][1]
-          b = std_curve_eq_list[[1]][2]
-          print(y)
-          #All curve EQs are in form y = mx + b, solving for x given y (absorbance) and b, gives estimated concentration
-          concentration_table_df[j, i] = (y - b) / m
-        }
-      }
-    }
-  }
-  return(concentration_table_df)
-}
-
-get_concentration_table(doe_pk_tab, standards_data_table, standards_curve_eq_list)
 
 
 
@@ -270,15 +225,15 @@ get_standard_presence_table <- function(peak_tab, data_table){
 ###---Standard presence tables - 2020 subsets---###
 #Doe farm treatments 
 doe_standard_presence_table = get_standard_presence_table(doe_pk_tab, standards_data_table)
-print(doe_standard_presence_table)
+#print(doe_standard_presence_table)
 
 #French Conservation farm treatments
 fre_standard_presence_table = get_standard_presence_table(fre_pk_tab, standards_data_table)
-print(fre_standard_presence_table)
+#print(fre_standard_presence_table)
 
 #East Foss farm treatments
 eas_standard_presence_table = get_standard_presence_table(eas_pk_tab, standards_data_table)
-print(eas_standard_presence_table)
+#print(eas_standard_presence_table)
 
 #Jennings forest treatments
 jen_standard_presence_table = get_standard_presence_table(jen_pk_tab, standards_data_table)
@@ -380,8 +335,8 @@ get_standard_presence_table_spec_check <- function(peak_tab, data_table, spec_sd
   return(standard_presence_table_spec_check)
 }
 
-get_standard_presence_table_spec_check(doe_pk_tab, standards_data_table)
-get_standard_presence_table_spec_check(tut_pk_tab, standards_data_table_21)
+doe_standard_presence_table_ref_spec = get_standard_presence_table_spec_check(doe_pk_tab, standards_data_table)
+tut_standard_presence_table_ref_spec = get_standard_presence_table_spec_check(tut_pk_tab, standards_data_table_21)
 
 
 
@@ -438,7 +393,7 @@ get_standard_presence_table_multiple = function(peak_tab, data_table) {
   return(standard_presence_table_multiple)
 }
 
-print(get_standard_presence_table_multiple(doe_pk_tab, standards_data_table))
+doe_standard_presence_table_multiple = get_standard_presence_table_multiple(doe_pk_tab, standards_data_table)
 
 
 
@@ -509,11 +464,11 @@ algorithmic_detection_peak_list = function(peak_list, stds_data_table) {
   return(alg_det_pk_list_df)
 }
 
-algorithmic_detection_peak_list(doe_pre_corrected_75_pks_egh, standards_data_table)
-algorithmic_detection_peak_list(fre_pre_corrected_75_pks_egh, standards_data_table)
+doe_algorithmic_detection_peak_list = algorithmic_detection_peak_list(doe_pre_corrected_75_pks_egh, standards_data_table)
+fre_algorithmic_detection_peak_list = algorithmic_detection_peak_list(fre_pre_corrected_75_pks_egh, standards_data_table)
 
-algorithmic_detection_peak_list(tut_pre_corrected_75_pks_egh, standards_data_table_21)
-algorithmic_detection_peak_list(pow_pre_corrected_75_pks_egh, standards_data_table_21)
+#tut_algorithmic_detection_peak_list = algorithmic_detection_peak_list(tut_pre_corrected_75_pks_egh, standards_data_table_21)
+pow_algorithmic_detection_peak_list = algorithmic_detection_peak_list(pow_pre_corrected_75_pks_egh, standards_data_table_21)
 
 
 
@@ -595,7 +550,7 @@ get_presence_rate_table = function(std_pres_tab_list, subset_meta_list){
 }
 
 standard_presence_rate_table = get_presence_rate_table(standard_presence_table_list, subset_metadata_list)
-print(standard_presence_rate_table)
+#print(standard_presence_rate_table)
 
 
 
@@ -644,10 +599,10 @@ std_detection_rt_table = function(peak_tab, data_table) {
 }
 
 doe_std_detection_rt = std_detection_rt_table(doe_pk_tab, standards_data_table)
-print(doe_std_detection_rt)
-print(std_detection_rt_table(fre_pk_tab, standards_data_table))
-print(std_detection_rt_table(eas_pk_tab, standards_data_table))
-print(std_detection_rt_table(jen_pk_tab, standards_data_table))
+#print(doe_std_detection_rt)
+#print(std_detection_rt_table(fre_pk_tab, standards_data_table))
+#print(std_detection_rt_table(eas_pk_tab, standards_data_table))
+#print(std_detection_rt_table(jen_pk_tab, standards_data_table))
 
 
 
@@ -738,32 +693,32 @@ quantify_peaks = function(pk_tab) {
 
 #store call on doe subset
 doe_quant_tab = quantify_peaks(doe_pk_tab)
-print(doe_quant_tab)
+#print(doe_quant_tab)
 #check that all rows sum to 100
-print(rowSums(doe_quant_tab))
+#print(rowSums(doe_quant_tab))
 
 eas_quant_tab = quantify_peaks(eas_pk_tab)
-print(eas_quant_tab)
+#print(eas_quant_tab)
 
 fre_quant_tab = quantify_peaks(fre_pk_tab)
-print(fre_quant_tab)
+#print(fre_quant_tab)
 
 jen_quant_tab = quantify_peaks(jen_pk_tab)
-print(jen_quant_tab)
+#print(jen_quant_tab)
 
 
 
 tut_quant_tab = quantify_peaks(tut_pk_tab)
-print(tut_quant_tab)
+#print(tut_quant_tab)
 
 pow_quant_tab = quantify_peaks(pow_pk_tab)
-print(pow_quant_tab)
+#print(pow_quant_tab)
 
 lee_quant_tab = quantify_peaks(lee_pk_tab)
-print(lee_quant_tab)
+#print(lee_quant_tab)
 
 lit_quant_tab = quantify_peaks(lit_pk_tab)
-print(lit_quant_tab)
+#print(lit_quant_tab)
 
 
 
@@ -778,35 +733,35 @@ combined_peak_meta_table = function(pk_tab) {
 }
 
 doe_combined_df = combined_peak_meta_table(doe_pk_tab)
-print(doe_combined_df)
+#print(doe_combined_df)
 write.csv(doe_combined_df, "doe_peak_and_meta.csv", row.names = FALSE, fileEncoding = "UTF-8")
 
 fre_combined_df = combined_peak_meta_table(fre_pk_tab)
-print(fre_combined_df)
+#print(fre_combined_df)
 write.csv(fre_combined_df, "fre_peak_and_meta.csv", row.names = FALSE, fileEncoding = "UTF-8")
 
 eas_combined_df = combined_peak_meta_table(eas_pk_tab)
-print(eas_combined_df)
+#print(eas_combined_df)
 write.csv(eas_combined_df, "eas_peak_and_meta.csv", row.names = FALSE, fileEncoding = "UTF-8")
 
 jen_combined_df = combined_peak_meta_table(jen_pk_tab)
-print(jen_combined_df)
+#print(jen_combined_df)
 write.csv(jen_combined_df, "jen_peak_and_meta.csv", row.names = FALSE, fileEncoding = "UTF-8")
 
 
 tut_combined_df = combined_peak_meta_table(tut_pk_tab)
-print(tut_combined_df)
+#(tut_combined_df)
 write.csv(tut_combined_df, "tut_peak_and_meta.csv", row.names = FALSE, fileEncoding = "UTF-8")
 
 pow_combined_df = combined_peak_meta_table(pow_pk_tab)
-print(pow_combined_df)
+#print(pow_combined_df)
 write.csv(pow_combined_df, "pow_peak_and_meta.csv", row.names = FALSE, fileEncoding = "UTF-8")
 
 lee_combined_df = combined_peak_meta_table(lee_pk_tab)
-print(lee_combined_df)
+#print(lee_combined_df)
 write.csv(lee_combined_df, "lee_peak_and_meta.csv", row.names = FALSE, fileEncoding = "UTF-8")
 
 lit_combined_df = combined_peak_meta_table(lit_pk_tab)
-print(lit_combined_df)
+#print(lit_combined_df)
 write.csv(lit_combined_df, "lit_peak_and_meta.csv", row.names = FALSE, fileEncoding = "UTF-8")
 
