@@ -25,7 +25,18 @@
 #         1) preprocessing/alignment, 2) NMDS, 3) Random Forest Analysis
 
 #load libraries
-pacman::p_load(chromConverter, usethis, chromatographR, stringi, tidyverse, pbapply, patchwork, gtools, ggrepel, data.table, parallel)
+library(chromConverter)
+library(usethis)
+library(chromatographR)
+library(stringi)
+library(tidyverse)
+library(pbapply)
+library(patchwork)
+library(gtools)
+library(ggrepel)
+library(data.table)
+library(parallel)
+library(here)
 #chromConverter - read data from propriatary shimadzu format
 #chromatographR - post-process and analyze spectra converted from chromConverter
 #stringi - to replace multiple patterns (better than multiple gsub())
