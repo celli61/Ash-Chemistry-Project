@@ -2,3 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
+
+# Raw data (confidential; never commit)
+data/raw/
