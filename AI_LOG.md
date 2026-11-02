@@ -115,3 +115,18 @@ Entry IDs are `YYYY-MM-DD-NN` (NN = order within that day). Commits containing A
 - **Rule overrides:** None
 - **Commit:** `[AI] Add renv lockfile; replace pacman::p_load with library() (log 2026-11-02-04)`
 - **Researcher review:** _
+
+### [2026-11-02-05] Step 3d: script run-order dependency map (report only)
+- **Tool / model:** Claude Code — Claude Sonnet 5.5 (`claude-sonnet-5-5`)
+- **Request:** Map which scripts depend on objects from which others and propose how to make each run in a clean session; researcher approved the read-only mapping
+- **Purpose:** code review
+- **What was done:** Parsed each `NH_Ash_*.R` script with R `parse()`/`getParseData()` (nothing executed, no data read) from a temporary script outside the repo. For every script, compared the symbols it uses with the top-level objects each other script assigns. Reported the result in chat only; no repo code changed.
+- **Files changed:** `AI_LOG.md` only
+- **Affects results:** No
+- **Verification:** The parse ran without errors on all seven scripts. The map is **reasoned** from static name matching, not from running the scripts.
+- **Methodological decisions:** None. Proposed options (driver script vs. saved checkpoints) were presented; the researcher has not yet chosen.
+- **AI-drafted prose:** No
+- **Uncertainties / [UNVERIFIED]:** Static matching can over-report (a name reused for something unrelated) and under-report (objects created by `assign()`, `attach`, or inside sourced code). Nineteen object names are assigned in more than one script, so the order in which scripts run can overwrite earlier objects; whether that is intended has not been confirmed.
+- **Rule overrides:** None
+- **Commit:** `[AI] Log run-order dependency map (log 2026-11-02-05)`
+- **Researcher review:** _
