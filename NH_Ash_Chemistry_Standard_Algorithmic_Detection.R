@@ -732,36 +732,37 @@ combined_peak_meta_table = function(pk_tab) {
   return(combined_df)
 }
 
+dir.create(here::here("output", "tables"), recursive = TRUE, showWarnings = FALSE) # write.csv will not create missing folders
 doe_combined_df = combined_peak_meta_table(doe_pk_tab)
 #print(doe_combined_df)
-write.csv(doe_combined_df, "doe_peak_and_meta.csv", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(doe_combined_df, here::here("output", "tables", "doe_peak_and_meta.csv"), row.names = FALSE, fileEncoding = "UTF-8")
 
 fre_combined_df = combined_peak_meta_table(fre_pk_tab)
 #print(fre_combined_df)
-write.csv(fre_combined_df, "fre_peak_and_meta.csv", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(fre_combined_df, here::here("output", "tables", "fre_peak_and_meta.csv"), row.names = FALSE, fileEncoding = "UTF-8")
 
 eas_combined_df = combined_peak_meta_table(eas_pk_tab)
 #print(eas_combined_df)
-write.csv(eas_combined_df, "eas_peak_and_meta.csv", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(eas_combined_df, here::here("output", "tables", "eas_peak_and_meta.csv"), row.names = FALSE, fileEncoding = "UTF-8")
 
 jen_combined_df = combined_peak_meta_table(jen_pk_tab)
 #print(jen_combined_df)
-write.csv(jen_combined_df, "jen_peak_and_meta.csv", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(jen_combined_df, here::here("output", "tables", "jen_peak_and_meta.csv"), row.names = FALSE, fileEncoding = "UTF-8")
 
 
 tut_combined_df = combined_peak_meta_table(tut_pk_tab)
 #(tut_combined_df)
-write.csv(tut_combined_df, "tut_peak_and_meta.csv", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(tut_combined_df, here::here("output", "tables", "tut_peak_and_meta.csv"), row.names = FALSE, fileEncoding = "UTF-8")
 
 pow_combined_df = combined_peak_meta_table(pow_pk_tab)
 #print(pow_combined_df)
-write.csv(pow_combined_df, "pow_peak_and_meta.csv", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(pow_combined_df, here::here("output", "tables", "pow_peak_and_meta.csv"), row.names = FALSE, fileEncoding = "UTF-8")
 
 lee_combined_df = combined_peak_meta_table(lee_pk_tab)
 #print(lee_combined_df)
-write.csv(lee_combined_df, "lee_peak_and_meta.csv", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(lee_combined_df, here::here("output", "tables", "lee_peak_and_meta.csv"), row.names = FALSE, fileEncoding = "UTF-8")
 
 lit_combined_df = combined_peak_meta_table(lit_pk_tab)
 #print(lit_combined_df)
-write.csv(lit_combined_df, "lit_peak_and_meta.csv", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(lit_combined_df, here::here("output", "tables", "lit_peak_and_meta.csv"), row.names = FALSE, fileEncoding = "UTF-8")
 

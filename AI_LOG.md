@@ -71,3 +71,25 @@ Entry IDs are `YYYY-MM-DD-NN` (NN = order within that day). Commits containing A
 - **Rule overrides:** None
 - **Commit:** `[AI] Add AI use policy, log, Claude Code config; gitignore data/raw (log 2026-11-02-02)`
 - **Researcher review:** _
+
+### [2026-11-02-03] Step 3b: project-relative input and output paths
+- **Tool / model:** Claude Code — Claude Sonnet 5.5 (`claude-sonnet-5-5`)
+- **Request:** Replace absolute input paths with `here::here("data","raw",...)`, send plot/table outputs to `here::here("output",...)`, remove commented `setwd()` lines; researcher approved ("do whatever you need to do") after a plain-language explanation
+- **Purpose:** refactoring
+- **What was done:**
+  - `NH_Ash_Chemistry_Alignments.R`: the two live `read_chroms()` input paths (formerly lines 48, 1526) now use `here::here("data","raw","2020"|"2021","Seperate_Comma")`; deleted the two commented `setwd()` lines (formerly 41, 1515).
+  - `NH_Ash_Chemistry_Plotting.R`: all 88 `ggsave()` targets (85 live + 3 commented) now go to `here::here("output","plots",...)`: the `G:/Work/Ash Chem Plots/6.24/` paths keep their subfolders (`quantity_by_peaks`, `quantity_by_standards`, `labelled_peaks`, by year), and bare filenames go to `output/plots/`. Added a loop near the top that creates those folders with `dir.create()`.
+  - `NH_Ash_Chemistry_Standard_Algorithmic_Detection.R`: the eight `*_peak_and_meta.csv` writes now go to `here::here("output","tables",...)`; added `dir.create()` before the first write.
+  - `.gitignore`: added `output/` (my default choice, to avoid committing possibly confidential results; reversible).
+- **Files changed:** the three scripts above; `.gitignore`; `AI_LOG.md`
+- **Affects results:** No for numbers, tables and figure content. Output file locations change. Not confirmed by rerun (see Verification).
+- **Verification:** Ran `Rscript` `parse()` on the three edited scripts (syntax OK; nothing executed). Grep confirms no live absolute paths, no `setwd`, and no `ggsave`/`write.csv` call without `here::here`. **Not verified:** the scripts were not run, because no data path is cleared for AI use (policy §2/§12) and `here` is not yet in an `renv` lockfile. The policy's "rerun and confirm outputs unchanged" check (§3) is therefore pending and is left to the researcher.
+- **Methodological decisions:** None (researcher chose: general approval; `output/` gitignore and one commit per step were my defaults)
+- **AI-drafted prose:** No
+- **Uncertainties / [UNVERIFIED]:**
+  - The commented-out `read_chroms("/Users/colto/Documents/...")` blocks (about lines 44-46 and 1519-1522 of the original) still contain absolute paths; they are dead code and I left them unchanged because only `setwd` removal was requested.
+  - Scripts assume `here` is installed and the project root is detected (the `.Rproj` file provides this).
+  - Line endings: the scripts use CRLF; edits preserve that, and git warns about LF/CRLF normalization (a Windows git setting, not a content change).
+- **Rule overrides:** None
+- **Commit:** `[AI] Use project-relative input/output paths via here() (log 2026-11-02-03)`
+- **Researcher review:** _

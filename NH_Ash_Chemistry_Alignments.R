@@ -38,14 +38,13 @@ cl = makeCluster(detectCores() - 1)
 
 #Separate comma format (note that the file folder has an typo, fix at some point)
 
-#setwd("/Users/toddjohnson/Sync/Box\ Sync/OneDrive\ -\ LSU\ AgCenter/Box\ Sync\ Files/Data/UNH\ HPLC\ data/Ash\ Phenolics/2020/Seperate_Comma/")
 
 #for running on my laptop
 #run_2019_2020_separate_comma <- read_chroms("/Users/colto/Documents/AshPhenolics/2020/Seperate_Comma/",
 #                                            read_metadata = TRUE,
 #                                            format_in = "shimadzu_dad", cl = cl)
 
-run_2019_2020_separate_comma <- read_chroms("/Users/colto/Documents/AshPhenolics/2020/Seperate_Comma/",
+run_2019_2020_separate_comma <- read_chroms(here::here("data", "raw", "2020", "Seperate_Comma"),
                                             read_metadata = TRUE,
                                             format_in = "shimadzu_dad", cl = cl)
 
@@ -1512,7 +1511,6 @@ jen_pk_tab_rt_df = as.data.frame(do.call(cbind, jen_pk_tab[2]))
 
 
 ###---2021---###
-#setwd("/Users/toddjoh/Ash Phenolics/2021/Seperate_Comma")
 
 ###---read data---###
 
@@ -1523,7 +1521,7 @@ jen_pk_tab_rt_df = as.data.frame(do.call(cbind, jen_pk_tab[2]))
 #                                       format_in = "shimadzu_dad", cl = cl)
 
 #Separate comma format (note that the file folder has an typo, fix at some point)
-run_2021_separate_comma <- read_chroms("/Users/colto/Documents/AshPhenolics/2021/Seperate_Comma", 
+run_2021_separate_comma <- read_chroms(here::here("data", "raw", "2021", "Seperate_Comma"), 
                                        parser="chromconverter",
                                        read_metadata = TRUE,
                                        format_in = "shimadzu_dad", cl = cl)

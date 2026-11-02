@@ -7,6 +7,11 @@ okabe_ito_colors <- c(
   "#0072B2", "#D55E00", "#CC79A7", "#999999"
 )
 
+# Create output folders (ggsave will not create missing folders)
+for (sub in c("", "quantity_by_peaks/2020", "quantity_by_peaks/2021", "quantity_by_standards/2020", "quantity_by_standards/2021", "labelled_peaks/2020", "labelled_peaks/2021")) {
+  dir.create(here::here("output", "plots", sub), recursive = TRUE, showWarnings = FALSE)
+}
+
 
 ###---Plotting Standard Presence by Treatment in Subset---###
 # plot_standard_presence(peak_tab, chrom_list, treatment_index, data_table, subset_meta)
@@ -93,22 +98,22 @@ plot_standard_presence <- function(peak_tab, run_index, data_table){
 
 #Plotting and saving standard presence plots for all subsets
 #plot_standard_presence(doe_pk_tab, 43, standards_data_table)
-ggsave("doe_plot_standard_presence.pdf", plot = plot_standard_presence(doe_pk_tab, 43, standards_data_table))
+ggsave(here::here("output", "plots", "doe_plot_standard_presence.pdf"), plot = plot_standard_presence(doe_pk_tab, 43, standards_data_table))
 #plot_standard_presence(fre_pk_tab, 12, standards_data_table)
-ggsave("fre_plot_standard_presence.pdf", plot = plot_standard_presence(fre_pk_tab, 12, standards_data_table))
+ggsave(here::here("output", "plots", "fre_plot_standard_presence.pdf"), plot = plot_standard_presence(fre_pk_tab, 12, standards_data_table))
 #plot_standard_presence(eas_pk_tab, 27, standards_data_table)
-ggsave("eas_plot_standard_presence.pdf", plot = plot_standard_presence(eas_pk_tab, 27, standards_data_table))
+ggsave(here::here("output", "plots", "eas_plot_standard_presence.pdf"), plot = plot_standard_presence(eas_pk_tab, 27, standards_data_table))
 #plot_standard_presence(jen_pk_tab, 24, standards_data_table)
-ggsave("jen_plot_standard_presence.pdf", plot = plot_standard_presence(jen_pk_tab, 24, standards_data_table))
+ggsave(here::here("output", "plots", "jen_plot_standard_presence.pdf"), plot = plot_standard_presence(jen_pk_tab, 24, standards_data_table))
 
 #plot_standard_presence(tut_pk_tab, 12, standards_data_table_21)
-ggsave("tut_plot_standard_presence.pdf", plot = plot_standard_presence(tut_pk_tab, 12, standards_data_table_21))
+ggsave(here::here("output", "plots", "tut_plot_standard_presence.pdf"), plot = plot_standard_presence(tut_pk_tab, 12, standards_data_table_21))
 #plot_standard_presence(pow_pk_tab, 67, standards_data_table_21)
-ggsave("pow_plot_standard_presence.pdf", plot = plot_standard_presence(pow_pk_tab, 67, standards_data_table_21))
+ggsave(here::here("output", "plots", "pow_plot_standard_presence.pdf"), plot = plot_standard_presence(pow_pk_tab, 67, standards_data_table_21))
 #plot_standard_presence(lee_pk_tab, 4, standards_data_table_21)
-ggsave("lee_plot_standard_presence.pdf", plot = plot_standard_presence(lee_pk_tab, 4, standards_data_table_21))
+ggsave(here::here("output", "plots", "lee_plot_standard_presence.pdf"), plot = plot_standard_presence(lee_pk_tab, 4, standards_data_table_21))
 #plot_standard_presence(lit_pk_tab, 4, standards_data_table_21)
-ggsave("lit_plot_standard_presence.pdf", plot = plot_standard_presence(lit_pk_tab, 4, standards_data_table_21))
+ggsave(here::here("output", "plots", "lit_plot_standard_presence.pdf"), plot = plot_standard_presence(lit_pk_tab, 4, standards_data_table_21))
 
 
 ###---Plotting Standard Presence by Tree Size---###
@@ -172,22 +177,22 @@ plot_standard_presence_tree_size = function(std_pres_tab, subset_meta) {
 
 #plotting and saving all standard presence detection plots for all subsets
 #plot_standard_presence_tree_size(doe_standard_presence_table, doe_meta)
-ggsave("doe_plot_standard_presence_detection.png", plot = plot_standard_presence_tree_size(doe_standard_presence_table, doe_meta))
+ggsave(here::here("output", "plots", "doe_plot_standard_presence_detection.png"), plot = plot_standard_presence_tree_size(doe_standard_presence_table, doe_meta))
 #plot_standard_presence_tree_size(fre_standard_presence_table, fre_meta)
-ggsave("fre_plot_standard_presence_detection.png", plot = plot_standard_presence_tree_size(fre_standard_presence_table, fre_meta))
+ggsave(here::here("output", "plots", "fre_plot_standard_presence_detection.png"), plot = plot_standard_presence_tree_size(fre_standard_presence_table, fre_meta))
 #plot_standard_presence_tree_size(eas_standard_presence_table, eas_meta)
-ggsave("eas_plot_standard_presence_detection.png", plot = plot_standard_presence_tree_size(eas_standard_presence_table, eas_meta))
+ggsave(here::here("output", "plots", "eas_plot_standard_presence_detection.png"), plot = plot_standard_presence_tree_size(eas_standard_presence_table, eas_meta))
 #plot_standard_presence_tree_size(jen_standard_presence_table, jen_meta)
-ggsave("jen_plot_standard_presence_detection.png", plot = plot_standard_presence_tree_size(jen_standard_presence_table, jen_meta))
+ggsave(here::here("output", "plots", "jen_plot_standard_presence_detection.png"), plot = plot_standard_presence_tree_size(jen_standard_presence_table, jen_meta))
 
 #plot_standard_presence_tree_size(tut_standard_presence_table, tut_meta)
-ggsave("tut_plot_standard_presence_detection.png", plot = plot_standard_presence_tree_size(tut_standard_presence_table, tut_meta))
+ggsave(here::here("output", "plots", "tut_plot_standard_presence_detection.png"), plot = plot_standard_presence_tree_size(tut_standard_presence_table, tut_meta))
 #plot_standard_presence_tree_size(pow_standard_presence_table, pow_meta)
-ggsave("pow_plot_standard_presence_detection.png", plot = plot_standard_presence_tree_size(pow_standard_presence_table, pow_meta))
+ggsave(here::here("output", "plots", "pow_plot_standard_presence_detection.png"), plot = plot_standard_presence_tree_size(pow_standard_presence_table, pow_meta))
 #plot_standard_presence_tree_size(lee_standard_presence_table, lee_meta)
-ggsave("lee_plot_standard_presence_detection.png", plot = plot_standard_presence_tree_size(lee_standard_presence_table, lee_meta))
+ggsave(here::here("output", "plots", "lee_plot_standard_presence_detection.png"), plot = plot_standard_presence_tree_size(lee_standard_presence_table, lee_meta))
 #plot_standard_presence_tree_size(lit_standard_presence_table, lit_meta)
-ggsave("lit_plot_standard_presence_detection.png", plot = plot_standard_presence_tree_size(lit_standard_presence_table, lit_meta))
+ggsave(here::here("output", "plots", "lit_plot_standard_presence_detection.png"), plot = plot_standard_presence_tree_size(lit_standard_presence_table, lit_meta))
 
 
 ###---Plotting Algorithmic Detection Rate by Tree Size---###
@@ -254,22 +259,22 @@ plot_standard_presence_rate = function(std_pres_tab, subset_meta) {
 
 #plotting and saving all standard presence rate table plots for all susbets
 #plot_standard_presence_rate(doe_standard_presence_table, doe_meta)
-ggsave("doe_plot_standard_presence_rate.pdf", plot = plot_standard_presence_rate(doe_standard_presence_table, doe_meta))
+ggsave(here::here("output", "plots", "doe_plot_standard_presence_rate.pdf"), plot = plot_standard_presence_rate(doe_standard_presence_table, doe_meta))
 #plot_standard_presence_rate(fre_standard_presence_table, fre_meta)
-ggsave("fre_plot_standard_presence_rate.pdf", plot = plot_standard_presence_rate(fre_standard_presence_table, fre_meta))
+ggsave(here::here("output", "plots", "fre_plot_standard_presence_rate.pdf"), plot = plot_standard_presence_rate(fre_standard_presence_table, fre_meta))
 #plot_standard_presence_rate(eas_standard_presence_table, eas_meta)
-ggsave("eas_plot_standard_presence_rate.pdf", plot = plot_standard_presence_rate(eas_standard_presence_table, eas_meta))
+ggsave(here::here("output", "plots", "eas_plot_standard_presence_rate.pdf"), plot = plot_standard_presence_rate(eas_standard_presence_table, eas_meta))
 #plot_standard_presence_rate(jen_standard_presence_table, jen_meta)
-ggsave("jen_plot_standard_presence_rate.pdf", plot = plot_standard_presence_rate(jen_standard_presence_table, jen_meta))
+ggsave(here::here("output", "plots", "jen_plot_standard_presence_rate.pdf"), plot = plot_standard_presence_rate(jen_standard_presence_table, jen_meta))
 
 #plot_standard_presence_rate(tut_standard_presence_table, tut_meta)
-ggsave("tut_plot_standard_presence_rate.pdf", plot = plot_standard_presence_rate(tut_standard_presence_table, tut_meta))
+ggsave(here::here("output", "plots", "tut_plot_standard_presence_rate.pdf"), plot = plot_standard_presence_rate(tut_standard_presence_table, tut_meta))
 #plot_standard_presence_rate(pow_standard_presence_table, pow_meta)
-ggsave("pow_plot_standard_presence_rate.pdf", plot = plot_standard_presence_rate(pow_standard_presence_table, pow_meta))
+ggsave(here::here("output", "plots", "pow_plot_standard_presence_rate.pdf"), plot = plot_standard_presence_rate(pow_standard_presence_table, pow_meta))
 #plot_standard_presence_rate(lee_standard_presence_table, lee_meta)
-ggsave("lee_plot_standard_presence_rate.pdf", plot = plot_standard_presence_rate(lee_standard_presence_table, lee_meta))
+ggsave(here::here("output", "plots", "lee_plot_standard_presence_rate.pdf"), plot = plot_standard_presence_rate(lee_standard_presence_table, lee_meta))
 #plot_standard_presence_rate(lit_standard_presence_table, lit_meta)
-ggsave("lit_plot_standard_presence_rate.pdf", plot = plot_standard_presence_rate(lit_standard_presence_table, lit_meta))
+ggsave(here::here("output", "plots", "lit_plot_standard_presence_rate.pdf"), plot = plot_standard_presence_rate(lit_standard_presence_table, lit_meta))
 
 
 
@@ -344,22 +349,22 @@ plot_standard_presence_rate_treatment = function(std_pres_tab, subset_meta) {
 
 #plotting and saving att standard presence rate by treatment plots for all susbets
 #plot_standard_presence_rate_treatment(doe_standard_presence_table, doe_meta)
-ggsave("doe_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(doe_standard_presence_table, doe_meta))
+ggsave(here::here("output", "plots", "doe_plot_standard_presence_rate_treatment.pdf"), plot = plot_standard_presence_rate_treatment(doe_standard_presence_table, doe_meta))
 plot_standard_presence_rate_treatment(fre_standard_presence_table, fre_meta)
-#ggsave("fre_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(fre_standard_presence_table, fre_meta))
+#ggsave(here::here("output", "plots", "fre_plot_standard_presence_rate_treatment.pdf"), plot = plot_standard_presence_rate_treatment(fre_standard_presence_table, fre_meta))
 plot_standard_presence_rate_treatment(eas_standard_presence_table, eas_meta)
-#ggsave("eas_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(eas_standard_presence_table, eas_meta))
+#ggsave(here::here("output", "plots", "eas_plot_standard_presence_rate_treatment.pdf"), plot = plot_standard_presence_rate_treatment(eas_standard_presence_table, eas_meta))
 plot_standard_presence_rate_treatment(jen_standard_presence_table, jen_meta)
-#ggsave("jen_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(jen_standard_presence_table, jen_meta))
+#ggsave(here::here("output", "plots", "jen_plot_standard_presence_rate_treatment.pdf"), plot = plot_standard_presence_rate_treatment(jen_standard_presence_table, jen_meta))
 
 #plot_standard_presence_rate_treatment(tut_standard_presence_table, tut_meta)
-ggsave("tut_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(tut_standard_presence_table, tut_meta))
+ggsave(here::here("output", "plots", "tut_plot_standard_presence_rate_treatment.pdf"), plot = plot_standard_presence_rate_treatment(tut_standard_presence_table, tut_meta))
 #plot_standard_presence_rate_treatment(pow_standard_presence_table, pow_meta)
-ggsave("pow_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(pow_standard_presence_table, pow_meta))
+ggsave(here::here("output", "plots", "pow_plot_standard_presence_rate_treatment.pdf"), plot = plot_standard_presence_rate_treatment(pow_standard_presence_table, pow_meta))
 #plot_standard_presence_rate_treatment(lee_standard_presence_table, lee_meta)
-ggsave("lee_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(lee_standard_presence_table, lee_meta))
+ggsave(here::here("output", "plots", "lee_plot_standard_presence_rate_treatment.pdf"), plot = plot_standard_presence_rate_treatment(lee_standard_presence_table, lee_meta))
 #plot_standard_presence_rate_treatment(lit_standard_presence_table, lit_meta)
-ggsave("lit_plot_standard_presence_rate_treatment.pdf", plot = plot_standard_presence_rate_treatment(lit_standard_presence_table, lit_meta))
+ggsave(here::here("output", "plots", "lit_plot_standard_presence_rate_treatment.pdf"), plot = plot_standard_presence_rate_treatment(lit_standard_presence_table, lit_meta))
 
 
 
@@ -447,90 +452,90 @@ plot_subset_peaks_quantity = function(pk_quant_tab, meta, group_var = c("sample_
 
 
 #Doe
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2020/doe_sample_type.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2020", "doe_sample_type.png"),
        plot = plot_subset_peaks_quantity(doe_quant_tab, doe_meta, "sample_type"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2020/doe_treatment.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2020", "doe_treatment.png"),
        plot = plot_subset_peaks_quantity(doe_quant_tab, doe_meta, "treatment"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2020/doe_tree_size.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2020", "doe_tree_size.png"),
        plot = plot_subset_peaks_quantity(doe_quant_tab, doe_meta, "tree_size"),
        width = 15, height = 10, units = "in", bg = "white")
 
 #Fre
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2020/fre_sample_type.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2020", "fre_sample_type.png"),
        plot = plot_subset_peaks_quantity(fre_quant_tab, fre_meta, "sample_type"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2020/fre_treatment.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2020", "fre_treatment.png"),
        plot = plot_subset_peaks_quantity(fre_quant_tab, fre_meta, "treatment"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2020/fre_tree_size.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2020", "fre_tree_size.png"),
        plot = plot_subset_peaks_quantity(fre_quant_tab, fre_meta, "tree_size"),
        width = 15, height = 10, units = "in", bg = "white")
 
 #Eas
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2020/eas_sample_type.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2020", "eas_sample_type.png"),
        plot = plot_subset_peaks_quantity(eas_quant_tab, eas_meta, "sample_type"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2020/eas_treatment.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2020", "eas_treatment.png"),
        plot = plot_subset_peaks_quantity(eas_quant_tab, eas_meta, "treatment"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2020/eas_tree_size.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2020", "eas_tree_size.png"),
        plot = plot_subset_peaks_quantity(eas_quant_tab, eas_meta, "tree_size"),
        width = 15, height = 10, units = "in", bg = "white")
 
 #Jen
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2020/jen_sample_type.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2020", "jen_sample_type.png"),
        plot = plot_subset_peaks_quantity(jen_quant_tab, jen_meta, "sample_type"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2020/jen_treatment.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2020", "jen_treatment.png"),
        plot = plot_subset_peaks_quantity(jen_quant_tab, jen_meta, "treatment"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2020/jen_tree_size.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2020", "jen_tree_size.png"),
        plot = plot_subset_peaks_quantity(jen_quant_tab, jen_meta, "tree_size"),
        width = 15, height = 10, units = "in", bg = "white")
 
 #Tut
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2021/tut_sample_type.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2021", "tut_sample_type.png"),
        plot = plot_subset_peaks_quantity(tut_quant_tab, tut_meta, "sample_type"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2021/tut_treatment.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2021", "tut_treatment.png"),
        plot = plot_subset_peaks_quantity(tut_quant_tab, tut_meta, "treatment"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2021/tut_tree_size.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2021", "tut_tree_size.png"),
        plot = plot_subset_peaks_quantity(tut_quant_tab, tut_meta, "tree_size"),
        width = 15, height = 10, units = "in", bg = "white")
 
 #Pow
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2021/pow_sample_type.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2021", "pow_sample_type.png"),
        plot = plot_subset_peaks_quantity(pow_quant_tab, pow_meta, "sample_type"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2021/pow_treatment.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2021", "pow_treatment.png"),
        plot = plot_subset_peaks_quantity(pow_quant_tab, pow_meta, "treatment"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2021/pow_tree_size.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2021", "pow_tree_size.png"),
        plot = plot_subset_peaks_quantity(pow_quant_tab, pow_meta, "tree_size"),
        width = 15, height = 10, units = "in", bg = "white")
 
 #Lee
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2021/lee_sample_type.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2021", "lee_sample_type.png"),
        plot = plot_subset_peaks_quantity(lee_quant_tab, lee_meta, "sample_type"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2021/lee_treatment.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2021", "lee_treatment.png"),
        plot = plot_subset_peaks_quantity(lee_quant_tab, lee_meta, "treatment"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2021/lee_tree_size.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2021", "lee_tree_size.png"),
        plot = plot_subset_peaks_quantity(lee_quant_tab, lee_meta, "tree_size"),
        width = 15, height = 10, units = "in", bg = "white")
 
 #Lit
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2021/lit_sample_type.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2021", "lit_sample_type.png"),
        plot = plot_subset_peaks_quantity(lit_quant_tab, lit_meta, "sample_type"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2021/lit_treatment.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2021", "lit_treatment.png"),
        plot = plot_subset_peaks_quantity(lit_quant_tab, lit_meta, "treatment"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_peaks/2021/lit_tree_size.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_peaks", "2021", "lit_tree_size.png"),
        plot = plot_subset_peaks_quantity(lit_quant_tab, lit_meta, "tree_size"),
        width = 15, height = 10, units = "in", bg = "white")
 
@@ -641,92 +646,92 @@ plot_subset_peaks_quantity_external_standards = function(pk_quant_tab, meta, sta
 }
 
 #Doe
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2020/doe_sample_type.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2020", "doe_sample_type.png"),
        plot = plot_subset_peaks_quantity_external_standards(doe_quant_tab, doe_meta, standards_data_table, "sample_type"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2020/doe_treatment.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2020", "doe_treatment.png"),
        plot = plot_subset_peaks_quantity_external_standards(doe_quant_tab, doe_meta, standards_data_table, "treatment"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2020/doe_tree_size.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2020", "doe_tree_size.png"),
        plot = plot_subset_peaks_quantity_external_standards(doe_quant_tab, doe_meta, standards_data_table, "tree_size"),
        width = 15, height = 10, units = "in", bg = "white")
 
 #Fre
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2020/fre_sample_type.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2020", "fre_sample_type.png"),
        plot = plot_subset_peaks_quantity_external_standards(fre_quant_tab, fre_meta, standards_data_table, "sample_type"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2020/fre_treatment.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2020", "fre_treatment.png"),
        plot = plot_subset_peaks_quantity_external_standards(fre_quant_tab, fre_meta, standards_data_table, "treatment"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2020/fre_tree_size.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2020", "fre_tree_size.png"),
        plot = plot_subset_peaks_quantity_external_standards(fre_quant_tab, fre_meta, standards_data_table, "tree_size"),
        width = 15, height = 10, units = "in", bg = "white")
 
 #Eas
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2020/eas_sample_type.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2020", "eas_sample_type.png"),
        plot = plot_subset_peaks_quantity_external_standards(eas_quant_tab, eas_meta, standards_data_table, "sample_type"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2020/eas_treatment.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2020", "eas_treatment.png"),
        plot = plot_subset_peaks_quantity_external_standards(eas_quant_tab, eas_meta, standards_data_table, "treatment"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2020/eas_tree_size.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2020", "eas_tree_size.png"),
        plot = plot_subset_peaks_quantity_external_standards(eas_quant_tab, eas_meta, standards_data_table, "tree_size"),
        width = 15, height = 10, units = "in", bg = "white")
 
 #Jen
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2020/jen_sample_type.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2020", "jen_sample_type.png"),
        plot = plot_subset_peaks_quantity_external_standards(jen_quant_tab, jen_meta, standards_data_table, "sample_type"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2020/jen_treatment.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2020", "jen_treatment.png"),
        plot = plot_subset_peaks_quantity_external_standards(jen_quant_tab, jen_meta, standards_data_table, "treatment"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2020/jen_tree_size.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2020", "jen_tree_size.png"),
        plot = plot_subset_peaks_quantity_external_standards(jen_quant_tab, jen_meta, standards_data_table, "tree_size"),
        width = 15, height = 10, units = "in", bg = "white")
 
 
 
 #Tut
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2021/tut_sample_type.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2021", "tut_sample_type.png"),
        plot = plot_subset_peaks_quantity_external_standards(tut_quant_tab, tut_meta, standards_data_table, "sample_type"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2021/tut_treatment.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2021", "tut_treatment.png"),
        plot = plot_subset_peaks_quantity_external_standards(tut_quant_tab, tut_meta, standards_data_table, "treatment"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2021/tut_tree_size.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2021", "tut_tree_size.png"),
        plot = plot_subset_peaks_quantity_external_standards(tut_quant_tab, tut_meta, standards_data_table, "tree_size"),
        width = 15, height = 10, units = "in", bg = "white")
 
 #Pow
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2021/pow_sample_type.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2021", "pow_sample_type.png"),
        plot = plot_subset_peaks_quantity_external_standards(pow_quant_tab, pow_meta, standards_data_table, "sample_type"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2021/pow_treatment.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2021", "pow_treatment.png"),
        plot = plot_subset_peaks_quantity_external_standards(pow_quant_tab, pow_meta, standards_data_table, "treatment"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2021/pow_tree_size.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2021", "pow_tree_size.png"),
        plot = plot_subset_peaks_quantity_external_standards(pow_quant_tab, pow_meta, standards_data_table, "tree_size"),
        width = 15, height = 10, units = "in", bg = "white")
 
 #Lee
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2021/lee_sample_type.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2021", "lee_sample_type.png"),
        plot = plot_subset_peaks_quantity_external_standards(lee_quant_tab, lee_meta, standards_data_table, "sample_type"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2021/lee_treatment.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2021", "lee_treatment.png"),
        plot = plot_subset_peaks_quantity_external_standards(lee_quant_tab, lee_meta, standards_data_table, "treatment"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2021/lee_tree_size.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2021", "lee_tree_size.png"),
        plot = plot_subset_peaks_quantity_external_standards(lee_quant_tab, lee_meta, standards_data_table, "tree_size"),
        width = 15, height = 10, units = "in", bg = "white")
 
 #Lit
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2021/lit_sample_type.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2021", "lit_sample_type.png"),
        plot = plot_subset_peaks_quantity_external_standards(lit_quant_tab, lit_meta, standards_data_table, "sample_type"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2021/lit_treatment.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2021", "lit_treatment.png"),
        plot = plot_subset_peaks_quantity_external_standards(lit_quant_tab, lit_meta, standards_data_table, "treatment"),
        width = 15, height = 10, units = "in", bg = "white")
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/quantity_by_standards/2021/lit_tree_size.png",
+ggsave(filename = here::here("output", "plots", "quantity_by_standards", "2021", "lit_tree_size.png"),
        plot = plot_subset_peaks_quantity_external_standards(lit_quant_tab, lit_meta, standards_data_table, "tree_size"),
        width = 15, height = 10, units = "in", bg = "white")
 
@@ -846,36 +851,36 @@ plot_labelled_chrom_overlay = function(peak_tab) {
     theme(legend.position = "none")
 }
 
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/labelled_peaks/2020/doe.png",
+ggsave(filename = here::here("output", "plots", "labelled_peaks", "2020", "doe.png"),
        plot = plot_labelled_chrom_overlay(doe_pk_tab),
        width = 15, height = 10, units = "in", bg = "white")
 
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/labelled_peaks/2020/fre.png",
+ggsave(filename = here::here("output", "plots", "labelled_peaks", "2020", "fre.png"),
        plot = plot_labelled_chrom_overlay(fre_pk_tab),
        width = 15, height = 10, units = "in", bg = "white")
 
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/labelled_peaks/2020/eas.png",
+ggsave(filename = here::here("output", "plots", "labelled_peaks", "2020", "eas.png"),
        plot = plot_labelled_chrom_overlay(eas_pk_tab),
        width = 15, height = 10, units = "in", bg = "white")
 
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/labelled_peaks/2020/jen.png",
+ggsave(filename = here::here("output", "plots", "labelled_peaks", "2020", "jen.png"),
        plot = plot_labelled_chrom_overlay(jen_pk_tab),
        width = 15, height = 10, units = "in", bg = "white")
 
 
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/labelled_peaks/2021/tut.png",
+ggsave(filename = here::here("output", "plots", "labelled_peaks", "2021", "tut.png"),
        plot = plot_labelled_chrom_overlay(tut_pk_tab),
        width = 15, height = 10, units = "in", bg = "white")
 
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/labelled_peaks/2021/pow.png",
+ggsave(filename = here::here("output", "plots", "labelled_peaks", "2021", "pow.png"),
        plot = plot_labelled_chrom_overlay(pow_pk_tab),
        width = 15, height = 10, units = "in", bg = "white")
 
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/labelled_peaks/2021/lee.png",
+ggsave(filename = here::here("output", "plots", "labelled_peaks", "2021", "lee.png"),
        plot = plot_labelled_chrom_overlay(lee_pk_tab),
        width = 15, height = 10, units = "in", bg = "white")
 
-ggsave(filename = "G:/Work/Ash Chem Plots/6.24/labelled_peaks/2021/lit.png",
+ggsave(filename = here::here("output", "plots", "labelled_peaks", "2021", "lit.png"),
        plot = plot_labelled_chrom_overlay(lit_pk_tab),
        width = 15, height = 10, units = "in", bg = "white")
 
