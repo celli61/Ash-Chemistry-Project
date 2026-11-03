@@ -243,3 +243,18 @@ Entry IDs are `YYYY-MM-DD-NN` (NN = order within that day). Commits containing A
 - **Rule overrides:** None
 - **Commit:** Not committed
 - **Researcher review:** _
+
+### [2026-11-02-13] First end-to-end run of run_all.R
+- **Tool / model:** Claude Code — Claude Sonnet 5.5 (`claude-sonnet-5-5`)
+- **Request:** Run `run_all.R` (rerun check pending from entries -03, -06, -07); researcher had cleared `G:/Work/Ash Chem Data` in `AI_USE_POLICY.md` §12 (entry -10)
+- **Purpose:** other — execution / reproducibility check
+- **What was done:** Ran `Rscript` in a fresh session from the project root with `ASH_CHEM_DATA_DIR="G:/Work/Ash Chem Data"` (local `.Renviron`), sourcing `run_all.R`; console log saved outside the repo in the session scratchpad (`run_all.log`, 2,647 lines). The run began around 18:2x and the log was last written 19:22. No code was changed. The scripts read the raw data; no raw data was edited. During the first script, `chromConverter` downloaded and installed a Python 3.12 environment (pandas, numpy, scipy, lxml) on this machine.
+- **Files changed:** `AI_LOG.md`; new untracked outputs in the gitignored `output/` (8 CSVs in `output/tables/`, 85 files under `output/plots/`)
+- **Affects results:** No code or settings changed. This run generated outputs for the first time in this setup.
+- **Verification:** Verified from the log: all six scripts started in order (Alignments, Standards, Standard_Curves, Standard_Algorithmic_Detection, Plotting, Absorbance), no `Error` or `Execution halted` lines, and R exit status 0. `output/tables/` holds the 8 expected `*_peak_and_meta.csv` files; `output/plots/` has 85 files, matching the 85 live `ggsave()` calls. The run printed "There were 34 warnings"; their text was not captured, so they are **unreviewed**. **Not verified:** that numbers, tables or figures are unchanged from earlier work. No prior outputs exist in this repo to compare against, and I did not open the CSVs or inspect the figures. The §3 "outputs unchanged" check is therefore still open and needs a baseline from the researcher.
+- **Methodological decisions:** None
+- **AI-drafted prose:** No
+- **Uncertainties / [UNVERIFIED]:** The 34 warnings may or may not matter. Random seeds were not examined, so whether two runs give identical results is unknown. Running took roughly an hour; peak-finding steps use a parallel cluster. Package versions are those in `renv.lock`/installed on this machine (restore not tested).
+- **Rule overrides:** None
+- **Commit:** Not committed
+- **Researcher review:** _
