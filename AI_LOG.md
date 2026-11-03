@@ -183,3 +183,18 @@ Entry IDs are `YYYY-MM-DD-NN` (NN = order within that day). Commits containing A
 - **Rule overrides:** Researcher-granted blanket approval for requests, with the scope limits stated above
 - **Commit:** `[AI] Add run_all.R driver, configurable raw-data path, and log entries (log 2026-11-02-08)`
 - **Researcher review:** _
+
+### [2026-11-02-09] Local data folder setting updated after rename
+- **Tool / model:** Claude Code — Claude Sonnet 5.5 (`claude-sonnet-5-5`)
+- **Request:** Raw data folder was renamed to "Ash Chem Data"; update the setting, then commit, push and pull
+- **Purpose:** other — local configuration
+- **What was done:** Edited the local, gitignored `.Renviron` so `ASH_CHEM_DATA_DIR` is `G:/Work/Ash Chem Data` (assumed new location: same parent `G:/Work`, renamed folder). No tracked code needed to change (paths come from `data_path()`). The data folder was not opened or listed.
+- **Files changed:** `AI_LOG.md` (this entry); `.Renviron` (local, not tracked)
+- **Affects results:** No
+- **Verification:** Not verified: the folder's existence and layout were not checked (path not cleared in policy §12).
+- **Methodological decisions:** None
+- **AI-drafted prose:** No
+- **Uncertainties / [UNVERIFIED]:** The new full path is inferred from the folder name; the researcher should confirm it. R must be restarted for the change to apply.
+- **Rule overrides:** None
+- **Commit:** `[AI] Log data-folder rename (log 2026-11-02-09)`
+- **Researcher review:** _
