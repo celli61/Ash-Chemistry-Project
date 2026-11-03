@@ -228,3 +228,18 @@ Entry IDs are `YYYY-MM-DD-NN` (NN = order within that day). Commits containing A
 - **Rule overrides:** None
 - **Commit:** `[AI] Fix stray word in data_path.R header (log 2026-11-02-11)`
 - **Researcher review:** _
+
+### [2026-11-02-12] Plain-language summary of the project code
+- **Tool / model:** Claude Code — Claude Sonnet 5.5 (`claude-sonnet-5-5`)
+- **Request:** Walk the researcher through the data flow, then write a plain-word summary of what all the code does
+- **Purpose:** method explanation; manuscript-style prose drafting (explicitly requested)
+- **What was done:** Read the R scripts (headers, section markers, function definitions, comments) and wrote `PROJECT_SUMMARY.md`. Gave a chat walkthrough of the pipeline before that. No data was opened or listed; no code changed.
+- **Files changed:** `PROJECT_SUMMARY.md` (new), `AI_LOG.md`
+- **Affects results:** No
+- **Verification:** Reasoned from code text only (comments, function names, `grep` for `lm(`/`nls(`/`predict(`, which found none). Nothing executed for this task.
+- **Methodological decisions:** None
+- **AI-drafted prose:** Yes — all of `PROJECT_SUMMARY.md`; researcher to review against the code and edit
+- **Uncertainties / [UNVERIFIED]:** I skimmed the 2,450-line Alignments script and did not read every section; subset-level details may be missing. Whether calibration regressions are fitted is unconfirmed. Site names are taken from code comments. The 2019 script's role is unknown. The background `run_all.R` run was still in progress when this was written.
+- **Rule overrides:** None
+- **Commit:** Not committed
+- **Researcher review:** _
