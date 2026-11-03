@@ -273,3 +273,18 @@ Entry IDs are `YYYY-MM-DD-NN` (NN = order within that day). Commits containing A
 - **Rule overrides:** None
 - **Commit:** `[AI] Gitignore Rplots.pdf (log 2026-11-02-14)`
 - **Researcher review:** _
+
+### [2026-11-02-15] Add PROJECT_STATUS.md
+- **Tool / model:** Claude Code — Claude Sonnet 5.5 (`claude-sonnet-5-5`)
+- **Request:** Create a status file so project progress can be tracked across sessions and devices (auto-memory is per machine; git is not)
+- **Purpose:** other — documentation
+- **What was done:** Wrote `PROJECT_STATUS.md` (current state, pending checks, open questions, decisions so far, next-step pointer) from this log and the session. Also saved a memory note (outside the repo) telling future sessions to keep milestones current.
+- **Files changed:** `PROJECT_STATUS.md` (new), `AI_LOG.md`
+- **Affects results:** No
+- **Verification:** Content checked against log entries -02 to -14; nothing executed.
+- **Methodological decisions:** None
+- **AI-drafted prose:** Yes — all of `PROJECT_STATUS.md`; researcher to review
+- **Uncertainties / [UNVERIFIED]:** Statements about the run and open items are only as current as 2026-11-02 and must be updated when things change.
+- **Rule overrides:** None
+- **Commit:** Not committed
+- **Researcher review:** _
