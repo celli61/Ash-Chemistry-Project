@@ -1,3 +1,8 @@
+# --- Dependencies (for run_all.R) ---
+# Requires: Alignments (*_pk_tab), Standards, Standard_Algorithmic_Detection (*_standard_presence_table, linear_search).
+# Produces: plot functions and figures written to output/plots/.
+# Run order: see run_all.R (step 5 of 6).
+
 ########################################################################################
 # Using compiled and structured data for graphical analysis of data in different forms #
 ########################################################################################

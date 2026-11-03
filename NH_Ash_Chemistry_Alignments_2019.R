@@ -1,3 +1,8 @@
+# --- Dependencies (for run_all.R) ---
+# Requires: Alignments (hplc_names_subset_df, hplc_list, hplc_sample_names_subset, rt_2020_doe, doe).
+# WARNING: reuses object names from Alignments (e.g. doe_pk_tab, doe_meta) and overwrites them if run in the same session.
+# Not part of run_all.R; its role in the pipeline is undecided.
+
 
 ###---2019---###
 

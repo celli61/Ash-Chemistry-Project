@@ -1,3 +1,8 @@
+# --- Dependencies (for run_all.R) ---
+# Requires: Alignments (hplc_list_standards, standards21_pre_standard_mix), Standards (*_peak_rt).
+# Produces: standard-mix peak tables and calibration objects (e.g. standard_mix_1_peak_table).
+# Run order: see run_all.R (step 3 of 6).
+
 cl = makeCluster(detectCores() - 1)
 
 #Subset out standard mix runs from 2020 standards by using logical indexing on attributes of runs

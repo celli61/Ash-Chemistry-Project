@@ -1,3 +1,8 @@
+# --- Dependencies (for run_all.R) ---
+# Requires: Alignments (peak tables), Standards (rt_list), Standard_Curves (standard_mix_*_peak_table).
+# Produces: standard presence tables (e.g. doe_standard_presence_table), standards_data_table, linear_search(); writes output/tables/*_peak_and_meta.csv.
+# Run order: see run_all.R (step 4 of 6).
+
 ##############################################################
 # Analysis and construction of data into relevant structures #
 ##############################################################

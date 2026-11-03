@@ -1,3 +1,8 @@
+# --- Dependencies (for run_all.R) ---
+# Requires: nothing (first script; reads raw data from data_path(), see data_path.R).
+# Produces: aligned chromatograms, peak tables (e.g. doe_pk_tab) and metadata for 2020 and 2021 samples and standards.
+# Run order: see run_all.R (step 1 of 6).
+
 ##################################################################################################################
 ### Project: Testing the ontogenetic resistance hypothesis in green and white ash across four size             ###
 ###          classes in New Hampshire                                                                          ###
@@ -37,6 +42,8 @@ library(ggrepel)
 library(data.table)
 library(parallel)
 library(here)
+# data_path() points at the raw data (local folder or external drive); see data_path.R
+source(here::here("data_path.R"))
 #chromConverter - read data from propriatary shimadzu format
 #chromatographR - post-process and analyze spectra converted from chromConverter
 #stringi - to replace multiple patterns (better than multiple gsub())
@@ -55,7 +62,7 @@ cl = makeCluster(detectCores() - 1)
 #                                            read_metadata = TRUE,
 #                                            format_in = "shimadzu_dad", cl = cl)
 
-run_2019_2020_separate_comma <- read_chroms(here::here("data", "raw", "2020", "Seperate_Comma"),
+run_2019_2020_separate_comma <- read_chroms(data_path("2020", "Seperate_Comma"),
                                             read_metadata = TRUE,
                                             format_in = "shimadzu_dad", cl = cl)
 
@@ -1532,7 +1539,7 @@ jen_pk_tab_rt_df = as.data.frame(do.call(cbind, jen_pk_tab[2]))
 #                                       format_in = "shimadzu_dad", cl = cl)
 
 #Separate comma format (note that the file folder has an typo, fix at some point)
-run_2021_separate_comma <- read_chroms(here::here("data", "raw", "2021", "Seperate_Comma"), 
+run_2021_separate_comma <- read_chroms(data_path("2021", "Seperate_Comma"),
                                        parser="chromconverter",
                                        read_metadata = TRUE,
                                        format_in = "shimadzu_dad", cl = cl)

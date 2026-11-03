@@ -1,0 +1,6 @@
+# Copy this file to `.Renviron` (same folder) and edit the path. `.Renviron` is
+# gitignored, so your local path is never committed. Restart R afterwards.
+#
+# Folder that contains 2020/Seperate_Comma and 2021/Seperate_Comma.
+# Use forward slashes, even on Windows. Leave this unset to use data/raw/ inside the project.
+ASH_CHEM_DATA_DIR=E:/path/to/raw

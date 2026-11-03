@@ -130,3 +130,56 @@ Entry IDs are `YYYY-MM-DD-NN` (NN = order within that day). Commits containing A
 - **Rule overrides:** None
 - **Commit:** `[AI] Log run-order dependency map (log 2026-11-02-05)`
 - **Researcher review:** _
+
+### [2026-11-02-06] Step 3d (option A): run_all.R driver and dependency headers
+- **Tool / model:** Claude Code — Claude Sonnet 5.5 (`claude-sonnet-5-5`)
+- **Request:** Implement option A from entry 2026-11-02-05: a driver script that runs the scripts in dependency order, plus a header comment in each script
+- **Purpose:** refactoring — reproducibility
+- **What was done:**
+  - Created `run_all.R`. It stops if the global workspace is not empty (so it must be run in a fresh session), then `source()`s, in the global environment, in this order: Alignments, Standards, Standard_Curves, Standard_Algorithmic_Detection, Plotting, Absorbance, using `here::here()` paths.
+  - `NH_Ash_Chemistry_Alignments_2019.R` is deliberately not run by the driver (its role is undecided and it overwrites object names from Alignments).
+  - Prepended a comment block ("Dependencies": Requires / Produces / run order) to all seven `NH_Ash_*.R` scripts. Line endings of each file were preserved. No code lines were changed.
+- **Files changed:** `run_all.R` (new); the seven `NH_Ash_*.R` scripts (comment header only); `AI_LOG.md`
+- **Affects results:** No intended change: comments and a new driver file only. Not confirmed by running.
+- **Verification:** `parse()` succeeded on `run_all.R` and all seven scripts. **Not verified:** that `run_all.R` runs end to end in a clean session. No script was run, because no data path is cleared (policy §2/§12). The order comes from the static dependency map in entry 2026-11-02-05, which is reasoned, not tested.
+- **Methodological decisions:** Researcher chose option A (driver script) over option B (checkpoint files).
+- **AI-drafted prose:** Yes — the header comments and the explanatory comments in `run_all.R` are AI-drafted; researcher to review.
+- **Uncertainties / [UNVERIFIED]:** The "Produces" lines in the headers summarize the static name map and may be incomplete. Both `Alignments.R` and `Standard_Curves.R` create their own `cl` cluster; the driver does not stop clusters. The order could still fail if a script relies on an object I did not detect. The role of `Alignments_2019.R` is unanswered.
+- **Rule overrides:** None
+- **Commit:** Not committed
+- **Researcher review:** _
+
+### [2026-11-02-07] Configurable raw-data location (external drive)
+- **Tool / model:** Claude Code — Claude Sonnet 5.5 (`claude-sonnet-5-5`)
+- **Request:** Raw data (~20 GB) is on a portable SSD and cannot go in git; set it up so the scripts read it from there. Researcher chose option A (per-machine environment variable) over option B (Windows junction).
+- **Purpose:** refactoring — reproducibility
+- **What was done:**
+  - Created `data_path.R` defining `data_path(...)`: returns a path under the folder in env var `ASH_CHEM_DATA_DIR`, or `here::here("data","raw")` if unset; stops with a message if that folder does not exist (e.g. drive unplugged). Read-only use; nothing writes there.
+  - Created `.Renviron.example` (template; the real `.Renviron` is the researcher's local file).
+  - `NH_Ash_Chemistry_Alignments.R`: added `source(here::here("data_path.R"))` after `library(here)`; the two `read_chroms()` input paths now use `data_path("2020","Seperate_Comma")` and `data_path("2021","Seperate_Comma")`; updated the "Requires" header line.
+  - `run_all.R`: comment text for step 1 updated.
+  - `.gitignore`: added `.Renviron`.
+- **Files changed:** `data_path.R` (new), `.Renviron.example` (new), `NH_Ash_Chemistry_Alignments.R`, `run_all.R` (comment), `.gitignore`, `AI_LOG.md`
+- **Affects results:** No intended change: same folders are read, only how the root is located. Not confirmed by rerun.
+- **Verification:** `parse()` succeeded on the three R files. Ran `data_path()` with a nonexistent folder (got the error message) and with an existing temp folder (returned the expected subpath). **Not verified:** reading the real data or running any script (no data path cleared, policy §2/§12; no data opened or listed).
+- **Methodological decisions:** Researcher chose option A.
+- **AI-drafted prose:** Yes — comments in `data_path.R` and `.Renviron.example`.
+- **Uncertainties / [UNVERIFIED]:** The SSD folder layout is assumed to contain `2020/Seperate_Comma` and `2021/Seperate_Comma`. R reads `.Renviron` only at startup, so R must be restarted after editing it. Paths in `.Renviron` should use forward slashes.
+- **Rule overrides:** None
+- **Commit:** Not committed
+- **Researcher review:** _
+
+### [2026-11-02-08] Researcher's blanket approval recorded; commit, pull, push
+- **Tool / model:** Claude Code — Claude Sonnet 5.5 (`claude-sonnet-5-5`)
+- **Request:** Researcher stated: "I give you blanket approval on requests. After you update what that entails, commit all changes with a descriptive commit message, then push and pull all changes."
+- **Purpose:** other — approval record and git housekeeping
+- **What was done:** Recorded the approval here (this entry). Committed all pending work (entries -06 and -07 plus this entry) in one commit, then pulled and pushed `main`.
+- **Files changed:** `AI_LOG.md` (this entry); commit also contains the previously uncommitted files listed in entries -06 and -07
+- **Affects results:** No
+- **Verification:** See the git output reported in chat.
+- **Methodological decisions:** None
+- **AI-drafted prose:** No
+- **Uncertainties / [UNVERIFIED]:** The scope of "blanket approval" was not specified. I am treating it as approval to carry out the researcher's requests (code, git, setup) without asking again for each step. I am NOT treating it as waiving `AI_USE_POLICY.md` §1 (scientific decisions stay the researcher's), §2 (restricted/uncleared data), or the §3 requirement to describe analysis-logic changes before making them; I cannot waive those on the researcher's behalf and they reflect LSU guideline §2.4. `AI_USE_POLICY.md` was not edited. If a narrower or broader scope is intended, the researcher should state it and it will be logged as a new entry. Per §7 the commit combines two logical changes (-06 and -07) because they touch the same file.
+- **Rule overrides:** Researcher-granted blanket approval for requests, with the scope limits stated above
+- **Commit:** `[AI] Add run_all.R driver, configurable raw-data path, and log entries (log 2026-11-02-08)`
+- **Researcher review:** _

@@ -1,3 +1,8 @@
+# --- Dependencies (for run_all.R) ---
+# Requires: Alignments (standards_*_peak_table objects).
+# Produces: standard retention-time objects (e.g. *_peak_rt, rt_list, standards_data_table).
+# Run order: see run_all.R (step 2 of 6).
+
 ###---Storing standards data in a matrix for easy iterative access---###
 
 ###---2020---###

@@ -1,3 +1,8 @@
+# --- Dependencies (for run_all.R) ---
+# Requires: Alignments (doe_pre_corrected_75_pks_egh), Standard_Curves (standard_mix_1_peaks).
+# Produces: absorbance function.
+# Run order: see run_all.R (step 6 of 6).
+
 #takes in a peak list and calculates absorbance values for each peak using Beer-Lambert's equation
 calculate_peak_absorbance = function(peak_list){
   #Initialize data frame to store peak data and calculated absorbance
