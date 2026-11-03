@@ -213,3 +213,18 @@ Entry IDs are `YYYY-MM-DD-NN` (NN = order within that day). Commits containing A
 - **Rule overrides:** None
 - **Commit:** Not committed
 - **Researcher review:** _
+
+### [2026-11-02-11] Fix stray word in data_path.R header
+- **Tool / model:** Claude Code — Claude Sonnet 5.5 (`claude-sonnet-5-5`)
+- **Request:** Remove a stray word ("The") before the `#` on line 1 of `data_path.R`, which would have made `source()` fail; then commit and push.
+- **Purpose:** debugging
+- **What was done:** Deleted the stray word so line 1 is a comment again. The stray word was introduced by an edit to the file outside this session and was committed in `e7a565c` (log 2026-11-02-10).
+- **Files changed:** `data_path.R` (line 1), `AI_LOG.md`
+- **Affects results:** No
+- **Verification:** Sourced `data_path.R` in a fresh `Rscript` session without error; `data_path("x")` with `ASH_CHEM_DATA_DIR` set to a temp folder returned the expected path. Real data not accessed. Full pipeline not run.
+- **Methodological decisions:** None
+- **AI-drafted prose:** No
+- **Uncertainties / [UNVERIFIED]:** None beyond the pending rerun check (§3).
+- **Rule overrides:** None
+- **Commit:** `[AI] Fix stray word in data_path.R header (log 2026-11-02-11)`
+- **Researcher review:** _
