@@ -258,3 +258,18 @@ Entry IDs are `YYYY-MM-DD-NN` (NN = order within that day). Commits containing A
 - **Rule overrides:** None
 - **Commit:** Not committed
 - **Researcher review:** _
+
+### [2026-11-02-14] Gitignore Rplots.pdf
+- **Tool / model:** Claude Code — Claude Sonnet 5.5 (`claude-sonnet-5-5`)
+- **Request:** Add `Rplots.pdf` (stray base-R plot output left by the run in entry -13) to `.gitignore`, then commit and push
+- **Purpose:** other — repository housekeeping
+- **What was done:** Appended `Rplots.pdf` to `.gitignore`. The file itself was not deleted.
+- **Files changed:** `.gitignore`, `AI_LOG.md`
+- **Affects results:** No
+- **Verification:** `git status` no longer lists `Rplots.pdf` as untracked.
+- **Methodological decisions:** None
+- **AI-drafted prose:** No
+- **Uncertainties / [UNVERIFIED]:** None
+- **Rule overrides:** None
+- **Commit:** `[AI] Gitignore Rplots.pdf (log 2026-11-02-14)`
+- **Researcher review:** _

@@ -10,3 +10,6 @@ output/
 
 # Local machine settings (path to raw data); copy .Renviron.example
 .Renviron
+
+# Stray base-R plot output from running the scripts
+Rplots.pdf
