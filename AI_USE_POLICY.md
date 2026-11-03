@@ -118,6 +118,6 @@ Also list separately every entry marked *Affects results: Yes* and every entry m
 ## 12. Project-specific settings (researcher fills in)
 
 - **Advisor authorization:** recorded in the `AI_LOG.md` header
-- **Cleared data paths** (advisor-approved for AI use): *(e.g. `data/processed/`)*
+- **Cleared data paths** (advisor-approved for AI use): `G:/Work/Ash Chem Data` (raw data, read-only; location set per machine via `ASH_CHEM_DATA_DIR` in `.Renviron`). Recorded 2026-11-02 at the researcher's instruction in chat; advisor approval details are not recorded here (see `AI_LOG.md` header).
 - **Restricted paths** (never read): *(e.g. `data/restricted/`, collaborator data)*
 - **Additional rules** from advisor, committee, department, honors program, or target journal: *(add here)*

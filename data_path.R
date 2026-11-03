@@ -1,4 +1,4 @@
-# data_path(): where the raw data lives on THIS machine.
+The # data_path(): where the raw data lives on THIS machine.
 #
 # The raw data is too large for git, so each person keeps their own copy
 # (e.g. on an external drive) and tells R where it is, once, in a local

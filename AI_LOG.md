@@ -198,3 +198,18 @@ Entry IDs are `YYYY-MM-DD-NN` (NN = order within that day). Commits containing A
 - **Rule overrides:** None
 - **Commit:** `[AI] Log data-folder rename (log 2026-11-02-09)`
 - **Researcher review:** _
+
+### [2026-11-02-10] Data path recorded in policy §12
+- **Tool / model:** Claude Code — Claude Sonnet 5.5 (`claude-sonnet-5-5`)
+- **Request:** Researcher stated the data is cleared ("You are clear to access it") and then asked me to "just record the path" without reading it.
+- **Purpose:** other — policy configuration
+- **What was done:** Edited `AI_USE_POLICY.md` §12, "Cleared data paths": entered `G:/Work/Ash Chem Data` (read-only), noting it was recorded at the researcher's instruction in chat. The folder was not opened or listed.
+- **Files changed:** `AI_USE_POLICY.md` (§12, one bullet), `AI_LOG.md`
+- **Affects results:** No
+- **Verification:** Not applicable; no data accessed.
+- **Methodological decisions:** None
+- **AI-drafted prose:** No
+- **Uncertainties / [UNVERIFIED]:** The advisor-authorization field in the log header is still blank, so the basis for "cleared" is the researcher's statement only. The researcher chose not to have me read the data; I have not, and will only do so if asked.
+- **Rule overrides:** None
+- **Commit:** Not committed
+- **Researcher review:** _
