@@ -1,6 +1,6 @@
 # Project status
 
-> **AI-drafted (Claude Sonnet 5.5); last updated 2026-11-02, log entry 2026-11-02-15.** A short, factual snapshot so a
+> **AI-drafted (Claude Sonnet 5.5); last updated 2026-11-02, log entry 2026-11-02-16.** A short, factual snapshot so a
 > new session or a new device can see where the project stands. The detailed record is `AI_LOG.md`; what the code
 > does is in `PROJECT_SUMMARY.md`. Keep this file current whenever a milestone, decision or open item changes.
 > It contains no interpretation of results.
@@ -14,14 +14,18 @@
   (see `.Renviron.example`, `data_path.R`). It is listed as a cleared path in `AI_USE_POLICY.md` §12.
 - Repo is set up with relative paths, an `renv` lockfile, a driver script, dependency headers in each script, and
   the AI-use policy and log.
+- **Baseline set (log 2026-11-02-16):** `baseline/` holds SHA-256 fingerprints of run-1 outputs and
+  `check_baseline.R`. A second identical run reproduced all 8 CSVs byte for byte (PDFs match once dates are
+  ignored; 8 label-placement PNGs differ). Use `source("baseline/check_baseline.R")` after every refactor.
 - Statistical steps named in the original plan (NMDS, Random Forest) are not in this repo.
 
 ## Pending checks (not done)
 
-- [ ] **Baseline comparison (policy §3):** outputs have not been compared to earlier results; no baseline exists
-      in the repo. Needs the researcher's older outputs, or the 2026-11-02 run adopted as the baseline.
-- [ ] **34 warnings** from the first run were not captured or reviewed.
-- [ ] **Repeatability:** random seeds not examined; unknown whether two runs give identical output.
+- [ ] **Comparison with earlier historical results (policy §3):** none done; no earlier outputs are on file. Needs
+      the researcher's older outputs if they exist.
+- [ ] **34 warnings** from the runs were not captured or reviewed.
+- [ ] **Decision for the researcher:** 8 `labelled_peaks/*.png` differ between runs (probably `ggrepel` label
+      placement with no seed set). Whether to set a seed in that plot call is not decided.
 - [ ] **Clean-machine test:** `renv::restore()` and the Python environment that `chromConverter` installed on first
       use are untested/unrecorded.
 

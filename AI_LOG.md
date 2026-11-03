@@ -288,3 +288,22 @@ Entry IDs are `YYYY-MM-DD-NN` (NN = order within that day). Commits containing A
 - **Rule overrides:** None
 - **Commit:** Not committed
 - **Researcher review:** _
+
+### [2026-11-02-16] Output baseline and repeatability check
+- **Tool / model:** Claude Code — Claude Sonnet 5.5 (`claude-sonnet-5-5`)
+- **Request:** Set up a baseline of the pipeline outputs before refactoring, save it, commit and push
+- **Purpose:** other — reproducibility / verification setup
+- **What was done:**
+  - Copied run-1 `output/` (93 files, 42 MB) to `baseline_outputs_2026-11-02_run1/` next to the repository (outside git) and computed SHA-256 for every file.
+  - Ran `run_all.R` a second time in a fresh session (exit status 0, same 34-warning message) and compared the results with run 1 file by file.
+  - Added `baseline/output_sha256_run1.txt` (fingerprints of all 93 files), `baseline/check_baseline.R` (compares current CSVs with the baseline; uses `tools::sha256sum`, no new package) and `baseline/README.md`.
+  - Updated `PROJECT_STATUS.md`.
+- **Files changed:** `baseline/output_sha256_run1.txt`, `baseline/check_baseline.R`, `baseline/README.md` (all new), `PROJECT_STATUS.md`, `AI_LOG.md`. No pipeline code changed.
+- **Affects results:** No code or settings changed.
+- **Verification:** Verified by running: all 8 `output/tables/*.csv` are byte-identical between run 1 and run 2, and `check_baseline.R` reports all 8 identical. All 21 PDFs are identical once embedded dates are removed (raw bytes differ by about 10 each). 56 of 64 PNGs are identical; 8 differ, all `plots/labelled_peaks/<year>/<site>.png`. Figures were not inspected visually. The cause of the PNG difference is **reasoned**, not confirmed: `ggrepel::geom_text_repel` (Plotting.R line 836) places labels randomly and `set.seed` appears nowhere in the scripts. Only one rerun was done, so repeatability is shown for two runs on one machine.
+- **Methodological decisions:** None. Adding a `seed` to the `geom_text_repel` call would be a plotting change and has been left for the researcher to decide.
+- **AI-drafted prose:** Yes — `baseline/README.md`, comments in `check_baseline.R`
+- **Uncertainties / [UNVERIFIED]:** The 34 warnings are still not reviewed. The check script needs R >= 4.5. The copy in `baseline_outputs_2026-11-02_run1/` exists on this machine only; the git-tracked manifest is what travels. The baseline is run 1 of the current code, not a comparison with any earlier historical results.
+- **Rule overrides:** None
+- **Commit:** `[AI] Add output baseline manifest and check script (log 2026-11-02-16)`
+- **Researcher review:** _
